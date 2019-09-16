@@ -1,0 +1,17 @@
+repos:
+  - repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+      - id: black
+        language_version: python3.7
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      # - id: no-commit-to-branch
+      - id: flake8
+      - id: requirements-txt-fixer
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.701
+    hooks:
+      - id: mypy
+        exclude: ^(docs/|example-plugin/|tests/fixtures)
