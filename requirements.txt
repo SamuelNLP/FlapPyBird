@@ -1,0 +1,7 @@
+black
+mypy
+pip-chill
+pre-commit
+pytest-datadir
+pytest-xdist
+tox
