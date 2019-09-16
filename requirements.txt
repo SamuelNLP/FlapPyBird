@@ -2,6 +2,7 @@ black
 mypy
 pip-chill
 pre-commit
+pygame
 pytest-datadir
 pytest-xdist
 tox
