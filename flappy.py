@@ -113,7 +113,7 @@ def main():
             pygame.image.load(PIPES_LIST[pipe_index]).convert_alpha(),
         )
 
-        # his_mask for pipes
+        # hit_mask for pipes
         HIT_MASKS["pipe"] = (
             get_hit_mask(IMAGES["pipe"][0]),
             get_hit_mask(IMAGES["pipe"][1]),
@@ -217,11 +217,10 @@ def main_game(movement_info):
     pipe_vel_x = -4
 
     # player velocity, max velocity, downward acceleration, acceleration on flap
-    player_vel_y = (
-        -9
-    )  # player's velocity along Y, default same as player_flapped
+    player_vel_y = -9
+
+    # player's velocity along Y, default same as player_flapped
     player_max_vel_y = 10  # max vel along Y, max descend speed
-    # player_min_vel_y = -8  # min vel along Y, max ascend speed
     player_acc_y = 1  # players downward acceleration
     player_rot = 45  # player's rotation
     player_vel_rot = 3  # angular speed
@@ -332,6 +331,22 @@ def main_game(movement_info):
 
         pygame.display.update()
         FPS_CLOCK.tick(FPS)
+
+        # what we need for the model #
+        print(score)
+        print(player_y)
+
+        if lower_pipes[0]["x"] > 0:
+            print(lower_pipes[0]["x"], lower_pipes[0]["y"])
+        else:
+            print(lower_pipes[1]["x"], lower_pipes[1]["y"])
+
+        # test to see if the keys are working
+        if player_y > lower_pipes[0]["x"]:
+            new_event = pygame.event.Event(
+                pygame.constants.KEYDOWN, {"key": K_SPACE}
+            )
+            pygame.event.post(new_event)
 
 
 def show_game_over_screen(crash_info):
